@@ -9,6 +9,7 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundImage:
       "linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))",
+    marginTop: "3rem",
   },
   icons: {
     width: "20%",
@@ -24,7 +25,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   copyright: {
     color: "#FFF",
-    fontSize: "0.8rem",
+    fontSize: "0.7rem",
     width: "70%",
     margin: "0 auto",
     marginBottom: "0.2rem",

@@ -11,17 +11,9 @@ import Contact from "./components/sections/contact/Contact";
 function App() {
   const theme = createTheme({
     typography: {
-      fontFamily: ['Exo-2', 'sans-serif'].join(","),
+      fontFamily: ["Cairo", "sans-serif"].join(","),
       h2: {
-        fontFamily: ['Cairo', 'sans-serif'].join(","),
-      },
-    },
-    palette: {
-      primary: {
-        main: "#06aed5",
-      },
-      secondary: {
-        main: "#6e5494",
+        fontFamily: ["Cairo", "sans-serif"].join(","),
       },
     },
   });

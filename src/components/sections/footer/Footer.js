@@ -13,7 +13,7 @@ const Footer = () => {
       >
         <LinkedInIcon fontSize="medium" />
       </a>
-        <p className={classes.copyright}>ROEI YAACOBI - WEB DEVELOPER <br/>COPYRIGHT © 2022 ALL RIGHTS RESERVE</p>
+        <p className={classes.copyright}>THIS SITE WAS BUILT BY ROEI YAACOBI<br/>COPYRIGHT © 2022 ALL RIGHTS RESERVE</p>
     </footer>);
 };
 

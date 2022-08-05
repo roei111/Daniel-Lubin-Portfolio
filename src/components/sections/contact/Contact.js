@@ -1,4 +1,6 @@
 import { Container, Typography, Divider } from "@mui/material";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useStyles } from "./Contact-style";
 
 const Contact = () => {
@@ -9,27 +11,28 @@ const Contact = () => {
       <Typography className={classes.title} component="h2">
         Contact
       </Typography>
-      {/* <div className={classes.aboutContent}>
-        <div>
-          <Typography className={classes.aboutText}>
-          Hi! Thanks for finding me.<br/>
-
-My name is <b>Daniel Lubin</b> and I write music. In my work, I am interested in the challenge of stimulating a <b>meaningful</b> emotional response to the language of contemporary music.<br/>
-
-Formerly an electronic musician yet classically trained, My creative input draws upon a wide range of genres - from EDM and Jazz to today’s modern composition world. My goal is to create an <b>exciting fusion</b> of those influences in the <b>concert hall</b>.<br/>
-
-Under the mentorship of <b>John Corigliano</b>, I am currently pursuing a Bachelor of Music in Composition from <b>The Juilliard School</b>. 
-
+      <div className={classes.contactText}>
+        <Typography variant="h6">
+          <b>Email</b>
+        </Typography>
+        <Typography variant="h7">daniellubin@gmail.com</Typography>
+        <Typography variant="h6" style={{ marginTop: "1rem" }}>
+          <b>Instagram</b>
+        </Typography>
+        <a
+          className={classes.icons}
+          href="https://www.instagram.com/daniellubin_/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InstagramIcon className={classes.icons} fontSize="medium" />
+          <br/>
+          <Typography variant="h7">
+            daniellubin_
+            <OpenInNewIcon fontSize="small" />
           </Typography>
-        </div>
-        <img
-          src={
-            "https://res.cloudinary.com/dq6iduc79/image/upload/v1659701636/Daniel%20Lubin%20Portfolio/Headshot_psz4l7_o6ml5z.jpg"
-          }
-          alt="about me"
-          className={classes.aboutImage}
-        />
-      </div> */}
+        </a>
+      </div>
     </Container>
   );
 };

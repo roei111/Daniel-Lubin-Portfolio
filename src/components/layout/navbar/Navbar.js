@@ -19,6 +19,7 @@ const navLinks = [
   { name: "Home", href: "home" },
   { name: "About me", href: "about" },
   { name: "Works", href: "works" },
+  { name: "Contact", href: "contact"}
 ];
 
 const navVariants = {

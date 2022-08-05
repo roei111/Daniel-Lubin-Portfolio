@@ -7,12 +7,14 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     marginBottom: "1rem !important",
   },
-  aboutContent: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-    [theme.breakpoints.up("md")]: {
-      flexDirection: "row",
+  contactText: {
+    textAlign: "center",
+  },
+  icons: {
+    color: "#000",
+    textDecoration: "none !important",
+    "& svg": {
+      color: "#000",
     },
   },
 }));
