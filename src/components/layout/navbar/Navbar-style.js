@@ -11,7 +11,6 @@ export const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
     [theme.breakpoints.up("md")]: {
       "&:hover": {
-        color: [theme.palette.primary.main],
         transition: "color 0.3s linear, border-bottom 0.2s ease-in-out",
         borderBottom: "3px solid",
       },

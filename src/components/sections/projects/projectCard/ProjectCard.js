@@ -1,6 +1,4 @@
-import { Typography, Card, CardContent, Chip } from "@mui/material";
-import CardButtons from "../CardButtons";
-import ImageCarousel from "../../../layout/imageCarousel/ImageCarousel";
+import { Typography, Card, CardContent } from "@mui/material";
 import { useStyles } from "./ProjectCard-style";
 
 const ProjectCard = (props) => {
@@ -8,7 +6,15 @@ const ProjectCard = (props) => {
   const { project } = props;
   return (
     <Card className={classes.card} elevation={15}>
-      <ImageCarousel images={project.img} />
+      {project.youtubeLink ? <iframe
+        width="100%"
+        height="250"
+        src={project.youtubeLink}
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe> : null}
       <div className={classes.contentWrapper}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -18,14 +24,6 @@ const ProjectCard = (props) => {
             {project.description}
           </Typography>
         </CardContent>
-        <div>
-          <div className={classes.allChips}>
-            {project.tech.map((tech, index) => (
-              <Chip className={classes.chip} label={tech} key={index} />
-            ))}
-          </div>
-          <CardButtons links={project.links} />
-        </div>
       </div>
     </Card>
   );

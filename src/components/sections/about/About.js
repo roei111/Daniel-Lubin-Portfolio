@@ -12,19 +12,19 @@ const About = () => {
       <div className={classes.aboutContent}>
         <div>
           <Typography className={classes.aboutText}>
-          Hi! Thanks for finding me. 
+          Hi! Thanks for finding me.<br/>
 
-My name is Daniel Lubin and I write music. In my work, I am interested in the challenge of stimulating a meaningful emotional response to the language of contemporary music.
+My name is <b>Daniel Lubin</b> and I write music. In my work, I am interested in the challenge of stimulating a <b>meaningful</b> emotional response to the language of contemporary music.<br/>
 
-Formerly an electronic musician yet classically trained, My creative input draws upon a wide range of genres - from EDM and Jazz to today’s modern composition world. My goal is to create an exciting fusion of those influences in the concert hall.
+Formerly an electronic musician yet classically trained, My creative input draws upon a wide range of genres - from EDM and Jazz to today’s modern composition world. My goal is to create an <b>exciting fusion</b> of those influences in the <b>concert hall</b>.<br/>
 
-Under the mentorship of John Corigliano, I am currently pursuing a Bachelor of Music in Composition from The Juilliard School. 
+Under the mentorship of <b>John Corigliano</b>, I am currently pursuing a Bachelor of Music in Composition from <b>The Juilliard School</b>. 
 
           </Typography>
         </div>
         <img
           src={
-            "https://res.cloudinary.com/dq6iduc79/image/upload/v1659641246/Daniel%20Lubin%20Portfolio/Headshot_psz4l7.jpg"
+            "https://res.cloudinary.com/dq6iduc79/image/upload/v1659701636/Daniel%20Lubin%20Portfolio/Headshot_psz4l7_o6ml5z.jpg"
           }
           alt="about me"
           className={classes.aboutImage}

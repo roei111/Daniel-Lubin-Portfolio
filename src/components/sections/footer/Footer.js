@@ -1,12 +1,19 @@
-import Icons from "../../icons/Icons";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useStyles } from "./Footer-style";
 
 const Footer = () => {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-        <Icons iconsClassName={classes.icons}/>
-        <p className={classes.copyright}>COPYRIGHT © 2022 <span className={classes.colorText}>ROEI YAACOBI</span> ALL RIGHTS RESERVE</p>
+        <a
+        className={classes.icons}
+        href="https://www.linkedin.com/in/roei-yaacobi/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <LinkedInIcon fontSize="medium" />
+      </a>
+        <p className={classes.copyright}>ROEI YAACOBI - WEB DEVELOPER <br/>COPYRIGHT © 2022 ALL RIGHTS RESERVE</p>
     </footer>);
 };
 

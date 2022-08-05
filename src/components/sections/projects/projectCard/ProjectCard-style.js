@@ -10,20 +10,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: "2rem auto",
+    maxWidth: "500px",
     [theme.breakpoints.up("lg")]: {
-      display: "flex",
-      flexDirection: "row-reverse",
+      width: "500px",
     },
   },
   contentWrapper: {
-    [theme.breakpoints.only("md")]:{
-      width: "70%",
-    },
-    [theme.breakpoints.up("lg")]: {
-      width: "400px",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-    },
+    textAlign: "center",
   },
 }));

@@ -6,14 +6,16 @@ import { useStyles } from "./Projects-style";
 const Projects = () => {
   const classes = useStyles();
   return (
-    <Container id="projects">
+    <Container id="works">
       <Divider variant="middle" style={{ margin: "1rem" }} />
       <Typography className={classes.title} component="h2">
-        Projects
+        Works
       </Typography>
-      {projects.map((project) => (
-        <ProjectCard project={project} key={project.id}/>
-      ))}
+      <div className={classes.projectsWrapper}>
+        {projects.map((project) => (
+          <ProjectCard project={project} key={project.id} />
+        ))}
+      </div>
     </Container>
   );
 };

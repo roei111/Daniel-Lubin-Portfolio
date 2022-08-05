@@ -6,11 +6,15 @@ import Home from "./components/sections/home/Home";
 import About from "./components/sections/about/About";
 import Projects from "./components/sections/projects/Projects";
 import Footer from "./components/sections/footer/Footer";
+import Contact from "./components/sections/contact/Contact";
 
 function App() {
   const theme = createTheme({
     typography: {
-      fontFamily: ['Exo 2', 'sans-serif'].join(","),
+      fontFamily: ['Exo-2', 'sans-serif'].join(","),
+      h2: {
+        fontFamily: ['Cairo', 'sans-serif'].join(","),
+      },
     },
     palette: {
       primary: {
@@ -29,6 +33,7 @@ function App() {
         <Home />
         <About />
         <Projects />
+        <Contact />
         <Footer />
         <ScrollTop showBelow={250} />
       </ThemeProvider>
