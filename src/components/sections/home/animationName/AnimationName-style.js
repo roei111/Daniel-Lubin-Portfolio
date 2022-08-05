@@ -7,6 +7,10 @@ export const useStyles = makeStyles((theme) => ({
     width: "90vw",
     height: "15vh",
     marginTop: "12vh",
+    [theme.breakpoints.up("sm")]: {
+      height: "20vh",
+      width: "40vw",
+    },
     [theme.breakpoints.up("lg")]: {
       height: "25vh",
       width: "40vw",
@@ -19,9 +23,6 @@ export const useStyles = makeStyles((theme) => ({
     "& path": {
       stroke: "white",
       strokeWidth: "5",
-      fill: (props) =>
-        //If the theme has changed one or more times, the fill will be without animation - to prevent animation repetition
-        props.isThemeChanged ? "white" : null,
     },
   },
 }));

@@ -27,7 +27,7 @@ const ScrollTop = ({ showBelow }) => {
   return (
     <div className={classes.wrapperDiv}>
       <Slide direction="up" in={show} mountOnEnter unmountOnExit>
-        <Fab onClick={handleClick} className={classes.fab} color="primary">
+        <Fab onClick={handleClick} className={classes.fab}>
           <KeyboardArrowUpIcon />
         </Fab>
       </Slide>

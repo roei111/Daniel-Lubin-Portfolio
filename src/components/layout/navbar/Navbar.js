@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import MenuIcon from "@mui/icons-material/Menu";
-import DarkModeSwitch from "../DarkModeSwitch";
 import { motion } from "framer-motion";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { useStyles } from "./Navbar-style";
@@ -74,7 +73,6 @@ const Navbar = (props) => {
         >
           Daniel Lubin
         </Typography>
-        <DarkModeSwitch {...props} />
         {navLinks.map((item, index) => (
           <Link
             className={`${classes.navlink} ${classes.hideLinks}`}

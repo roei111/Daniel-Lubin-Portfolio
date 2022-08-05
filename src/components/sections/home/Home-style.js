@@ -3,15 +3,13 @@ import { makeStyles } from "@mui/styles";
 export const useStyles = makeStyles((theme) => ({
   home: {
     height: "100vh",
-    backgroundImage: theme.palette.mode === "dark" ? 
-      "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('https://res.cloudinary.com/dq6iduc79/image/upload/v1659642497/Daniel%20Lubin%20Portfolio/Cover_photo_gzqggr.jpg')" :
-      "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('https://res.cloudinary.com/dq6iduc79/image/upload/v1659642497/Daniel%20Lubin%20Portfolio/Cover_photo_gzqggr.jpg')",
+    backgroundImage:
+      "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url('https://res.cloudinary.com/dq6iduc79/image/upload/v1659642497/Daniel%20Lubin%20Portfolio/Cover_photo_gzqggr.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     [theme.breakpoints.up("lg")]: {
-      backgroundImage: theme.palette.mode === "dark" ? 
-      "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('https://res.cloudinary.com/dq6iduc79/image/upload/v1659642663/Daniel%20Lubin%20Portfolio/Cover_photo_ua4xsf.jpg')" :
-      "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('https://res.cloudinary.com/dq6iduc79/image/upload/v1659642663/Daniel%20Lubin%20Portfolio/Cover_photo_ua4xsf.jpg')",
+      backgroundImage:
+        "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)), url('https://res.cloudinary.com/dq6iduc79/image/upload/v1659642663/Daniel%20Lubin%20Portfolio/Cover_photo_ua4xsf.jpg')",
     },
   },
   container: {
@@ -20,8 +18,8 @@ export const useStyles = makeStyles((theme) => ({
     height: "55%",
     zIndex: 1,
     [theme.breakpoints.up("lg")]: {
-      marginLeft: "60vw !important"
-    }
+      marginLeft: "60vw !important",
+    },
   },
   text: {
     padding: "1rem",

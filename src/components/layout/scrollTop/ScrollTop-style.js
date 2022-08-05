@@ -10,5 +10,7 @@ export const useStyles = makeStyles({
     bottom: "2vh",
     right: "2vh",
     zIndex: "100",
+    backgroundColor: "#000 !important",
+    color: "#FFF !important",
   },
 });
