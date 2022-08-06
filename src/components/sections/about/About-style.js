@@ -1,9 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
-  aboutPage:{
-    marginTop: "4rem",
-  },
   container: {
     minHeight: "100vh",
     margin: "1rem",

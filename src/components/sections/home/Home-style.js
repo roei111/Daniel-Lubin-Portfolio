@@ -28,17 +28,4 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "1.5rem !important",
     fontWeight: "700 !important",
   },
-  homeButtonsWrapper: {
-    display: "flex",
-    justifyContent: "space-between",
-    width: "95%",
-  },
-  homeButton: {
-    fontWeight: "800 !important",
-    letterSpacing: "0.1em !important",
-    "&:hover": {
-      opacity: "0.85",
-      transition: "all 0.2s ease-in-out",
-    },
-  },
 }));

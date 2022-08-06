@@ -25,8 +25,8 @@ const pathAttributes = {
   animate: "visible",
 };
 
-const AnimationName = (props) => {
-  const classes = useStyles(props);
+const AnimationName = () => {
+  const classes = useStyles();
 
   return (
     <div className={classes.wrapper}>

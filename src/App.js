@@ -8,10 +8,14 @@ import HomePage from "./pages/HomePage";
 import WorksPage from "./pages/WorksPage";
 import ContactPage from "./pages/ContactPage";
 import RouterScrollToTop from "./components/utils/RouterScrollToTop";
-import AboutPage from "./pages/AboutPage";
 
 function App() {
   const theme = createTheme({
+    palette:{
+      primary: {
+        main: "#FFF"
+      }
+    },
     typography: {
       fontFamily: ["Cairo", "sans-serif"].join(","),
       h2: {
@@ -27,7 +31,6 @@ function App() {
           <RouterScrollToTop/>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/works" element={<WorksPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
