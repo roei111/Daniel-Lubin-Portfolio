@@ -1,6 +1,10 @@
 import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
+  container: {
+    minHeight: "100vh",
+    marginTop: "4rem",
+  },
   title: {
     fontSize: "2rem !important",
     fontWeight: "700 !important",

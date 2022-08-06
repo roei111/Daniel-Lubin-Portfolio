@@ -1,4 +1,4 @@
-import { Container, Typography, Divider } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useStyles } from "./Contact-style";
@@ -6,8 +6,7 @@ import { useStyles } from "./Contact-style";
 const Contact = () => {
   const classes = useStyles();
   return (
-    <Container id="contact">
-      <Divider variant="middle" style={{ margin: "1rem" }} />
+    <Container id="contact" className={classes.container}>
       <Typography className={classes.title} component="h2">
         Contact
       </Typography>
@@ -26,7 +25,7 @@ const Contact = () => {
           rel="noopener noreferrer"
         >
           <InstagramIcon className={classes.icons} fontSize="medium" />
-          <br/>
+          <br />
           <Typography variant="h7">
             daniellubin_
             <OpenInNewIcon fontSize="small" />

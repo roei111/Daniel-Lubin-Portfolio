@@ -1,4 +1,4 @@
-import { Container, Typography, Divider } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import projects from "../../../data/projectData";
 import ProjectCard from "./projectCard/ProjectCard";
 import { useStyles } from "./Projects-style";
@@ -6,8 +6,7 @@ import { useStyles } from "./Projects-style";
 const Projects = () => {
   const classes = useStyles();
   return (
-    <Container id="works">
-      <Divider variant="middle" style={{ margin: "1rem" }} />
+    <Container id="works" className={classes.container}>
       <Typography className={classes.title} component="h2">
         Works
       </Typography>

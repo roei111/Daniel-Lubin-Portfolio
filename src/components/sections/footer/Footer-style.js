@@ -9,7 +9,6 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     backgroundImage:
       "linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))",
-    marginTop: "3rem",
   },
   icons: {
     width: "20%",

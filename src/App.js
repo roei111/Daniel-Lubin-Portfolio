@@ -2,11 +2,13 @@ import Navbar from "./components/layout/navbar/Navbar";
 import ScrollTop from "./components/layout/scrollTop/ScrollTop";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import Home from "./components/sections/home/Home";
-import About from "./components/sections/about/About";
-import Projects from "./components/sections/projects/Projects";
 import Footer from "./components/sections/footer/Footer";
-import Contact from "./components/sections/contact/Contact";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import WorksPage from "./pages/WorksPage";
+import ContactPage from "./pages/ContactPage";
+import RouterScrollToTop from "./components/utils/RouterScrollToTop";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   const theme = createTheme({
@@ -20,12 +22,17 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Navbar />
+          <RouterScrollToTop/>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/works" element={<WorksPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </BrowserRouter>
         <CssBaseline />
-        <Navbar />
-        <Home />
-        <About />
-        <Projects />
-        <Contact />
         <Footer />
         <ScrollTop showBelow={250} />
       </ThemeProvider>

@@ -12,14 +12,15 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import MenuIcon from "@mui/icons-material/Menu";
 import { motion } from "framer-motion";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import { useStyles } from "./Navbar-style";
 
 const navLinks = [
-  { name: "Home", href: "home" },
-  { name: "About me", href: "about" },
-  { name: "Works", href: "works" },
-  { name: "Contact", href: "contact"}
+  { name: "Home", href: "/" },
+  { name: "About me", href: "/about" },
+  { name: "Works", href: "/works" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const navVariants = {
@@ -50,12 +51,17 @@ const linkVariants = {
   }),
 };
 
-const backToTop = () => {
-  scroll.scrollToTop();
-};
+const activeNavStyle = { borderBottom: "3px solid" };
 
 const Navbar = (props) => {
   const classes = useStyles();
+  let { pathname } = useLocation();
+  let navigate = useNavigate();
+
+  const backToTop = () => {
+    if (pathname === "/") scroll.scrollToTop();
+    else navigate("/");
+  };
   const [open, setOpen] = useState(false);
   return (
     <AppBar position="sticky" color="default" className={classes.navbar}>
@@ -76,13 +82,12 @@ const Navbar = (props) => {
           Daniel Lubin
         </Typography>
         {navLinks.map((item, index) => (
-          <Link
+          <NavLink
             className={`${classes.navlink} ${classes.hideLinks}`}
+            style={({ isActive }) =>
+              isActive && item.name !== "Home" ? activeNavStyle : undefined
+            }
             to={item.href}
-            spy={true}
-            smooth={true}
-            offset={-50}
-            duration={500}
             key={item.name}
             component={motion.a}
             custom={index}
@@ -91,7 +96,7 @@ const Navbar = (props) => {
             animate="visible"
           >
             {item.name}
-          </Link>
+          </NavLink>
         ))}
         <IconButton className={classes.menuIcon} onClick={() => setOpen(true)}>
           <MenuIcon />
@@ -118,17 +123,18 @@ const Navbar = (props) => {
           {navLinks.map((item) => (
             <React.Fragment key={item.name}>
               <ListItem>
-                <Link
+                <NavLink
                   className={classes.navlink}
+                  style={({ isActive }) =>
+                    isActive && item.name !== "Home"
+                      ? activeNavStyle
+                      : undefined
+                  }
                   to={item.href}
-                  spy={true}
-                  smooth={true}
-                  offset={-50}
-                  duration={500}
                   onClick={() => setOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </NavLink>
               </ListItem>
               <Divider variant="middle" />
             </React.Fragment>
