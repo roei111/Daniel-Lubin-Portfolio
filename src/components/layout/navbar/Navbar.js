@@ -62,13 +62,14 @@ const Navbar = (props) => {
       <Toolbar
         disableGutters
         component={motion.nav}
+        className={classes.toolbar}
         variants={navVariants}
         initial="hidden"
         animate="visible"
       >
         <Typography
           className={classes.logo}
-          variant="h5"
+          variant="h7"
           color="text.primary"
           onClick={backToTop}
         >

@@ -2,11 +2,14 @@ import { makeStyles } from "@mui/styles";
 
 export const useStyles = makeStyles((theme) => ({
   navbar: {
-    height: "70px",
+    height: "45px !important",
     position: "fixed !important",
   },
+  toolbar:{
+    minHeight: "45px !important"
+  },
   navlink: {
-    padding: "10px 20px",
+    padding: "5px 20px",
     fontWeight: "600 !important",
     cursor: "pointer",
     [theme.breakpoints.up("md")]: {
@@ -23,7 +26,7 @@ export const useStyles = makeStyles((theme) => ({
   logo: {
     marginRight: "auto !important",
     fontWeight: "600 !important",
-    padding: "20px",
+    padding: "5px",
   },
   menuIcon: {
     display: "visible",
