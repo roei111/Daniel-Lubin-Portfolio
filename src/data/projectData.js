@@ -10,7 +10,7 @@ const projects = [
     id: 2,
     title: "Lucid Dream (2021)",
     description:
-      "Vln., Vln., Vla., Vc., Kb.]",
+      "[Vln., Vln., Vla., Vc., Kb.]",
     youtubeLink: "https://www.youtube.com/embed/Hb09Ok1k8Z8"
   },
   {

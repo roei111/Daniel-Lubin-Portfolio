@@ -35,6 +35,7 @@ const HomeButtons = () => {
     <div className={classes.homeButtonsWrapper}>
       <Button
         variant="contained"
+        color="secondary"
         className={`${classes.homeButton} ${classes.workButton}`}
         component={motion.div}
         variants={buttonVariants}
@@ -46,6 +47,7 @@ const HomeButtons = () => {
       </Button>
       <Button
         variant="contained"
+        color="secondary"
         className={classes.homeButton}
         component={motion.div}
         variants={buttonVariants}
