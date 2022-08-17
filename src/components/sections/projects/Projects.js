@@ -1,9 +1,27 @@
 import { Container, Typography } from "@mui/material";
-import projects from "../../../data/projectData";
+import { useEffect, useState } from "react";
+// import projects from "../../../data/projectData";
 import ProjectCard from "./projectCard/ProjectCard";
 import { useStyles } from "./Projects-style";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firestore";
 
 const Projects = () => {
+  const [projects, setProjects]=useState([])
+  useEffect(() => {
+    console.log("in useeffect");
+    getProjects().then((projects)=>{setProjects(projects)})
+  }, []);
+
+  const getProjects = async () => {
+    let projectsData = [];
+    const querySnapshot = await getDocs(collection(db, "works"));
+    querySnapshot.forEach((doc) => {
+      projectsData.push({ id: doc.id, ...doc.data() });
+      console.log(doc.id, " => ", doc.data());
+    });
+    return projectsData;
+  };
   const classes = useStyles();
   return (
     <Container id="works" className={classes.container}>

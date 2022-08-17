@@ -17,6 +17,7 @@ const AdminForm = () => {
     defaultValues: {
       title: "",
       description: "",
+      year: null,
       youtubeLink: "",
     },
   });
@@ -73,6 +74,27 @@ const AdminForm = () => {
                   fullWidth
                   label={"Description"}
                   variant="outlined"
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="year"
+              rules={{ required: true }}
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextField
+                  helperText={error ? "Year is required" : null}
+                  size="small"
+                  error={!!error}
+                  onChange={onChange}
+                  value={value}
+                  fullWidth
+                  label={"Year"}
+                  variant="outlined"
+                  type="number"
                 />
               )}
             />
