@@ -17,7 +17,7 @@ const AdminForm = () => {
     defaultValues: {
       title: "",
       description: "",
-      year: null,
+      year: "",
       youtubeLink: "",
     },
   });
@@ -36,7 +36,7 @@ const AdminForm = () => {
             sx={{ display: "grid", gridRowGap: "20px", padding: "20px" }}
             margin={{ sm: "10px 100px", md: "10px 200px", lg: "10px 300px" }}
           >
-            <Typography variant="h5">Add new work</Typography>
+            <Typography variant="h5" textAlign={"center"}>Add new work</Typography>
             <Controller
               control={control}
               name="title"
@@ -94,7 +94,7 @@ const AdminForm = () => {
                   fullWidth
                   label={"Year"}
                   variant="outlined"
-                  type="number"
+                  type="Number"
                 />
               )}
             />
