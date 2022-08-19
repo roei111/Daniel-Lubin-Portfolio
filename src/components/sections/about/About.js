@@ -1,7 +1,18 @@
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Skeleton } from "@mui/material";
 import { useStyles } from "./About-style";
+import { useState, useEffect } from "react";
+import { getAbout } from "../../../firestore/utils";
+import DOMPurify from "dompurify";
 
 const About = () => {
+  const [about, setAbout] = useState({});
+
+  useEffect(() => {
+    getAbout().then((about) => {
+      console.log(about[0].text);
+      setAbout(about[0]);
+    });
+  }, []);
   const classes = useStyles();
   return (
     <Container id="about" className={classes.container}>
@@ -10,16 +21,22 @@ const About = () => {
       </Typography>
       <div className={classes.aboutContent}>
         <div>
-          <Typography className={classes.aboutText}>
-          Hi! Thanks for finding me.<br/>
-
-My name is <b>Daniel Lubin</b> and I write music. In my work, I am interested in the challenge of stimulating a <b>meaningful</b> emotional response to the language of contemporary music.<br/>
-
-Formerly an electronic musician yet classically trained, My creative input draws upon a wide range of genres - from EDM and Jazz to today’s modern composition world. My goal is to create an <b>exciting fusion</b> of those influences in the <b>concert hall</b>.<br/>
-
-Under the mentorship of <b>John Corigliano</b>, I am currently pursuing a Bachelor of Music in Composition from <b>The Juilliard School</b>. 
-
-          </Typography>
+          {/* <Typography
+            className={classes.aboutText}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(about.text,  {ALLOWED_TAGS: ['b','br']}),
+            }}
+          >
+          </Typography> */}
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
         </div>
         <img
           src={

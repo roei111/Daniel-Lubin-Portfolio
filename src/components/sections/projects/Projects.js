@@ -23,6 +23,7 @@ const Projects = () => {
   const [projects, setProjects] = useState(null);
   useEffect(() => {
     getProjects().then((projects) => {
+      console.log(projects)
       setProjects(projects);
     });
   }, []);

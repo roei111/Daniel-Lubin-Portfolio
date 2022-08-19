@@ -10,9 +10,9 @@ import {
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../../../firestore";
+import { db } from "../../../../firestore";
 
-const AdminForm = () => {
+const ProjectForm = () => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
@@ -30,11 +30,11 @@ const AdminForm = () => {
 
   return (
     <>
-      <Paper elevation={3}>
+      <Paper elevation={3} sx={{maxWidth: "700px", margin: "0 auto"}}>
         <form onSubmit={handleSubmit(sumbitHandler)}>
           <Box
             sx={{ display: "grid", gridRowGap: "20px", padding: "20px" }}
-            margin={{ sm: "10px 100px", md: "10px 200px", lg: "10px 300px" }}
+            margin={{ xs: "20px 0", sm:"20px 100px"}}
           >
             <Typography variant="h5" textAlign={"center"}>Add new work</Typography>
             <Controller
@@ -127,4 +127,4 @@ const AdminForm = () => {
   );
 };
 
-export default AdminForm;
+export default ProjectForm;
