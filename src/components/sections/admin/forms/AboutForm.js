@@ -1,13 +1,4 @@
-import {
-  Paper,
-  Button,
-  TextField,
-  Box,
-  Typography,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-} from "@mui/material";
+import { Paper, Button, TextField, Box, Typography } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firestore";
@@ -17,21 +8,19 @@ import { useEffect, useState } from "react";
 const AboutForm = () => {
   const [about, setAbout] = useState({});
 
-  const { control, handleSubmit, reset, setValue } = useForm({
+  const { control, handleSubmit, setValue } = useForm({
     defaultValues: {
       text: "",
     },
   });
   useEffect(() => {
     getAbout().then((about) => {
-      console.log(about[0].text);
       setValue("text", about[0].text);
       setAbout(about[0]);
     });
-  }, []);
+  }, [setValue]);
 
   const sumbitHandler = async (data) => {
-    console.log(data);
     await updateDoc(doc(db, "about", about.id), data);
   };
 
