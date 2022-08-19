@@ -1,13 +1,4 @@
-import {
-  Paper,
-  Button,
-  TextField,
-  Box,
-  Typography,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-} from "@mui/material";
+import { Paper, Button, TextField, Box, Typography } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../../../firestore";
@@ -23,20 +14,21 @@ const ProjectForm = () => {
   });
 
   const sumbitHandler = async (data) => {
-    console.log(data);
     await addDoc(collection(db, "works"), data);
     reset();
   };
 
   return (
     <>
-      <Paper elevation={3} sx={{maxWidth: "700px", margin: "0 auto"}}>
+      <Paper elevation={3} sx={{ maxWidth: "700px", margin: "0 auto" }}>
         <form onSubmit={handleSubmit(sumbitHandler)}>
           <Box
             sx={{ display: "grid", gridRowGap: "20px", padding: "20px" }}
-            margin={{ xs: "20px 0", sm:"20px 100px"}}
+            margin={{ xs: "20px 0", sm: "20px 100px" }}
           >
-            <Typography variant="h5" textAlign={"center"}>Add new work</Typography>
+            <Typography variant="h5" textAlign={"center"}>
+              Add new work
+            </Typography>
             <Controller
               control={control}
               name="title"

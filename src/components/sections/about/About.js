@@ -5,11 +5,10 @@ import { getAbout } from "../../../firestore/utils";
 import DOMPurify from "dompurify";
 
 const About = () => {
-  const [about, setAbout] = useState({});
+  const [about, setAbout] = useState(null);
 
   useEffect(() => {
     getAbout().then((about) => {
-      console.log(about[0].text);
       setAbout(about[0]);
     });
   }, []);
@@ -21,22 +20,24 @@ const About = () => {
       </Typography>
       <div className={classes.aboutContent}>
         <div>
-          {/* <Typography
-            className={classes.aboutText}
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(about.text,  {ALLOWED_TAGS: ['b','br']}),
-            }}
-          >
-          </Typography> */}
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
-          <Skeleton variant="text" sx={{ fontSize: '1rem', margin: "0.5rem 2rem" }} width={"500px"} />
+          {about ? (
+            <Typography
+              className={classes.aboutText}
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(about.text, {
+                  ALLOWED_TAGS: ["b", "br"],
+                }),
+              }}
+            ></Typography>
+          ) : (
+            [...Array(10)].map((item, index) => (
+              <Skeleton
+                key={index}
+                variant="text"
+                className={classes.skeleton}
+              />
+            ))
+          )}
         </div>
         <img
           src={

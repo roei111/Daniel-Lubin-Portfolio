@@ -42,4 +42,16 @@ export const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
     },
   },
+  skeleton: {
+    fontSize: "1rem",
+    margin: "0.5rem 2rem !important",
+    width: "90vw !important",
+    [theme.breakpoints.up("md")]: {
+      margin: "1.5rem 2rem !important",
+      width: "400px !important",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "500px !important",
+    },
+  },
 }));

@@ -1,6 +1,5 @@
 import { Container, Typography, Skeleton } from "@mui/material";
 import { useEffect, useState } from "react";
-// import projects from "../../../data/projectData";
 import ProjectCard from "./projectCard/ProjectCard";
 import { useStyles } from "./Projects-style";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
@@ -23,7 +22,6 @@ const Projects = () => {
   const [projects, setProjects] = useState(null);
   useEffect(() => {
     getProjects().then((projects) => {
-      console.log(projects)
       setProjects(projects);
     });
   }, []);
@@ -31,8 +29,6 @@ const Projects = () => {
   const classes = useStyles();
   return (
     <Container id="works" className={classes.container}>
-      {console.log("app in being rendered")}
-
       <Typography className={classes.title} component="h2">
         Works
       </Typography>

@@ -8,7 +8,6 @@ var ui = new firebaseui.auth.AuthUI(auth);
 
 const SignIn = () => {
   useEffect(() => {
-    console.log("useEffect");
     ui.start("#firebaseui-auth-container", {
       signInOptions: [
         {
