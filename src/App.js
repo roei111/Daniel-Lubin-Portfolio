@@ -8,11 +8,12 @@ import HomePage from "./pages/HomePage";
 import WorksPage from "./pages/WorksPage";
 import ContactPage from "./pages/ContactPage";
 import RouterScrollToTop from "./components/utils/RouterScrollToTop";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   const theme = createTheme({
     palette:{
-      primary: {
+      secondary: {
         main: "#FFF"
       }
     },
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/works" element={<WorksPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </BrowserRouter>
         <CssBaseline />

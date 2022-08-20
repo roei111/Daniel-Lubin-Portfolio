@@ -6,7 +6,7 @@ const ProjectCard = (props) => {
   const { project } = props;
   return (
     <Card className={classes.card} elevation={15}>
-      {project.youtubeLink ? (
+      {project.youtubeLink !== "" ? (
         <iframe
           width="100%"
           height="250"

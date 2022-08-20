@@ -1,9 +1,31 @@
-import { Container, Typography } from "@mui/material";
-import projects from "../../../data/projectData";
+import { Container, Typography, Skeleton } from "@mui/material";
+import { useEffect, useState } from "react";
 import ProjectCard from "./projectCard/ProjectCard";
 import { useStyles } from "./Projects-style";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { db } from "../../../firestore";
 
+const getProjects = async () => {
+  let projectsData = [];
+  const queryDB = query(
+    collection(db, "works"),
+    orderBy("youtubeLink", "desc"),
+    orderBy("year", "desc")
+  );
+  const snapshot = await getDocs(queryDB);
+  snapshot.forEach((doc) => {
+    projectsData.push({ id: doc.id, ...doc.data() });
+  });
+  return projectsData;
+};
 const Projects = () => {
+  const [projects, setProjects] = useState(null);
+  useEffect(() => {
+    getProjects().then((projects) => {
+      setProjects(projects);
+    });
+  }, []);
+
   const classes = useStyles();
   return (
     <Container id="works" className={classes.container}>
@@ -11,9 +33,18 @@ const Projects = () => {
         Works
       </Typography>
       <div className={classes.projectsWrapper}>
-        {projects.map((project) => (
-          <ProjectCard project={project} key={project.id} />
-        ))}
+        {projects
+          ? projects.map((project) => (
+              <ProjectCard project={project} key={project.id} />
+            ))
+          : [...Array(6)].map((item,index) => (
+              <Skeleton
+                key={index}
+                animation="wave"
+                variant="rounded"
+                className={classes.projectCard}
+              />
+            ))}
       </div>
     </Container>
   );

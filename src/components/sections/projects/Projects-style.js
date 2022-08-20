@@ -19,4 +19,13 @@ export const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
+  projectCard: {
+    margin: "2rem auto",
+    maxWidth: "500px",
+    height: "350px !important",
+    borderRadius: "1%",
+    [theme.breakpoints.up("lg")]: {
+      width: "500px",
+    },
+  },
 }));
