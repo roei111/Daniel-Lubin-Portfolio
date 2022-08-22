@@ -19,7 +19,9 @@ const SignIn = () => {
       ],
     });
   }, []);
-  return <div id="firebaseui-auth-container"></div>;
+  return (
+    <div id="firebaseui-auth-container" style={{ marginTop: "1.5rem" }}></div>
+  );
 };
 
 export default SignIn;

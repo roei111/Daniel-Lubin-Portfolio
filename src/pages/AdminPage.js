@@ -1,7 +1,7 @@
-import Admin from "../components/sections/admin/Admin";
+import AdminPanel from "../components/sections/admin/AdminPanel";
 
 const AdminPage = () => {
-  return <Admin />;
+  return <AdminPanel />;
 };
 
 export default AdminPage;
