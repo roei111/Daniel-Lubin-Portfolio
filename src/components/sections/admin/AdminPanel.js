@@ -7,13 +7,13 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firestore";
 import SignIn from "./SignIn";
 import NotificationContext from "../../../context/notification-context";
-import Notification from "../../ux/Notification";
+import Notification from "../../ui/Notification";
 
 const AdminPanel = () => {
   const [value, setValue] = useState(1);
   const [loggedInUser, setLoggedInUser] = useState(auth.currentUser);
   const notificationCtx = useContext(NotificationContext);
-  
+
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setLoggedInUser(user);
