@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Box } from "@mui/material";
 import Header from "./Header";
 import ProjectForm from "./forms/ProjectForm";
@@ -6,10 +6,13 @@ import AboutForm from "./forms/AboutForm";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../firestore";
 import SignIn from "./SignIn";
+import NotificationContext from "../../../context/notification-context";
+import Notification from "../../ui/Notification";
 
 const AdminPanel = () => {
   const [value, setValue] = useState(1);
   const [loggedInUser, setLoggedInUser] = useState(auth.currentUser);
+  const notificationCtx = useContext(NotificationContext);
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -22,18 +25,23 @@ const AdminPanel = () => {
   const logOutHandler = () => {
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
-        console.log("signed out");
+        notificationCtx.createNotification(
+          "success",
+          "Logged out successfully"
+        );
       })
       .catch((error) => {
-        // An error happened.
-        console.log("signed out error", error.message);
+        notificationCtx.createNotification(
+          "error",
+          "There was an error trying to log out"
+        );
       });
   };
 
   const handleTabChange = (newValue) => {
     setValue(newValue);
   };
+
   return (
     <Box
       sx={{
@@ -44,6 +52,7 @@ const AdminPanel = () => {
         marginTop: "45px",
       }}
     >
+      {notificationCtx.notification ? <Notification /> : null}
       {loggedInUser ? (
         <>
           <Header

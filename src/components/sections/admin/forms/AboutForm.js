@@ -3,10 +3,12 @@ import { useForm, Controller } from "react-hook-form";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firestore";
 import { getAbout } from "../../../../firestore/utils";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import NotificationContext from "../../../../context/notification-context";
 
 const AboutForm = () => {
   const [about, setAbout] = useState({});
+  const notificationCtx = useContext(NotificationContext);
 
   const { control, handleSubmit, setValue } = useForm({
     defaultValues: {
@@ -21,7 +23,19 @@ const AboutForm = () => {
   }, [setValue]);
 
   const sumbitHandler = async (data) => {
-    await updateDoc(doc(db, "about", about.id), data);
+    await updateDoc(doc(db, "about", about.id), data)
+      .then(() => {
+        notificationCtx.createNotification(
+          "success",
+          "Successfully updated About text"
+        );
+      })
+      .catch((error) => {
+        notificationCtx.createNotification(
+          "error",
+          "There was an error trying to update About text"
+        );
+      });
   };
 
   return (
