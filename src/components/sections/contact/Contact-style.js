@@ -13,6 +13,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   contactText: {
     textAlign: "center",
+    alignItems: "center",
   },
   icons: {
     color: "#000",
@@ -20,5 +21,9 @@ export const useStyles = makeStyles((theme) => ({
     "& svg": {
       color: "#000",
     },
+  },
+  skeleton: {
+    margin: "0 auto",
+    width: "150px"
   },
 }));

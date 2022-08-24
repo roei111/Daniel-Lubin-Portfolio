@@ -1,11 +1,11 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from ".";
 
-export const getAbout = async () => {
-  let aboutData = [];
-  const snapshot = await getDocs(collection(db, "about"));
+export const getData = async (collectionName) => {
+  let data = [];
+  const snapshot = await getDocs(collection(db, collectionName));
   snapshot.forEach((doc) => {
-    aboutData.push({ id: doc.id, ...doc.data() });
+    data.push({ id: doc.id, ...doc.data() });
   });
-  return aboutData;
+  return data;
 };

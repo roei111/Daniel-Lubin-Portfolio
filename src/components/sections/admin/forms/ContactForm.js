@@ -6,23 +6,23 @@ import { getData } from "../../../../firestore/utils";
 import { useEffect, useState, useContext } from "react";
 import NotificationContext from "../../../../context/notification-context";
 
-const AboutForm = () => {
-  const [about, setAbout] = useState({});
+const ContactForm = () => {
+  const [contact, setContact] = useState({});
   const notificationCtx = useContext(NotificationContext);
 
   const { control, handleSubmit, setValue } = useForm({
     defaultValues: {
-      text: "",
+      email: "",
+      instagramUser: "",
     },
   });
   useEffect(() => {
-    console.log("inside effect")
-    getData("about")
-      .then((about) => {
-        setValue("text", about[0].text);
-        setAbout(about[0]);
-    console.log("setting the about")
-
+    getData("contact")
+      .then((contact) => {
+        const { email, instagramUser } = contact[0];
+        setValue("email", email);
+        setValue("instagramUser", instagramUser);
+        setContact(contact[0]);
       })
       .catch(() => {
         notificationCtx.createNotification(
@@ -33,17 +33,17 @@ const AboutForm = () => {
   }, [setValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const sumbitHandler = async (data) => {
-    await updateDoc(doc(db, "about", about.id), data)
+    await updateDoc(doc(db, "contact", contact.id), data)
       .then(() => {
         notificationCtx.createNotification(
           "success",
-          "Successfully updated About text"
+          "Successfully updated Contact text"
         );
       })
       .catch(() => {
         notificationCtx.createNotification(
           "error",
-          "There was an error trying to update About text"
+          "There was an error trying to update Contact text"
         );
       });
   };
@@ -57,27 +57,45 @@ const AboutForm = () => {
             margin={{ xs: "20px 0", sm: "20px 100px" }}
           >
             <Typography variant="h5" textAlign={"center"}>
-              Edit About Me
+              Edit Contact
             </Typography>
             <Controller
               control={control}
-              name="text"
+              name="email"
               rules={{ required: true }}
               render={({
                 field: { onChange, value },
                 fieldState: { error },
               }) => (
                 <TextField
-                  helperText={error ? "About me text is required" : null}
+                  helperText={error ? "Email is required" : null}
                   size="small"
                   error={!!error}
                   onChange={onChange}
                   value={value}
                   fullWidth
-                  label={"Text"}
+                  label={"Email"}
                   variant="outlined"
-                  multiline
-                  rows={10}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="instagramUser"
+              rules={{ required: true }}
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextField
+                  helperText={error ? "Instagram user is required" : null}
+                  size="small"
+                  error={!!error}
+                  onChange={onChange}
+                  value={value}
+                  fullWidth
+                  label={"Instagram user"}
+                  variant="outlined"
                 />
               )}
             />
@@ -91,4 +109,4 @@ const AboutForm = () => {
   );
 };
 
-export default AboutForm;
+export default ContactForm;
