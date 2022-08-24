@@ -16,13 +16,10 @@ const AboutForm = () => {
     },
   });
   useEffect(() => {
-    console.log("inside effect")
     getData("about")
       .then((about) => {
         setValue("text", about[0].text);
         setAbout(about[0]);
-    console.log("setting the about")
-
       })
       .catch(() => {
         notificationCtx.createNotification(

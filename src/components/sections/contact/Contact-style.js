@@ -13,7 +13,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   contactText: {
     textAlign: "center",
-    alignItems: "center",
   },
   icons: {
     color: "#000",
