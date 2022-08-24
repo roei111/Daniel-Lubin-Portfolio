@@ -21,4 +21,8 @@ export const useStyles = makeStyles((theme) => ({
       color: "#000",
     },
   },
+  skeleton: {
+    margin: "0 auto",
+    width: "150px"
+  },
 }));

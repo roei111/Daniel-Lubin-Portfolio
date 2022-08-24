@@ -1,16 +1,17 @@
 import { Container, Typography, Skeleton } from "@mui/material";
 import { useStyles } from "./About-style";
 import { useState, useEffect } from "react";
-import { getAbout } from "../../../firestore/utils";
+import { getData } from "../../../firestore/utils";
 import DOMPurify from "dompurify";
 
 const About = () => {
   const [about, setAbout] = useState(null);
 
   useEffect(() => {
-    getAbout().then((about) => {
-      setAbout(about[0]);
-    });
+    getData("about")
+      .then((about) => {
+        setAbout(about[0]);
+      })
   }, []);
   const classes = useStyles();
   return (

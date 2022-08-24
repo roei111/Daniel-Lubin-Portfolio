@@ -8,6 +8,7 @@ import { auth } from "../../../firestore";
 import SignIn from "./SignIn";
 import NotificationContext from "../../../context/notification-context";
 import Notification from "../../ui/Notification";
+import ContactForm from "./forms/ContactForm";
 
 const AdminPanel = () => {
   const [value, setValue] = useState(1);
@@ -68,7 +69,7 @@ const AdminPanel = () => {
               <AboutForm />
             </TabPanel>
             <TabPanel value={value} index={2}>
-              Contact Form
+              <ContactForm />
             </TabPanel>
           </Box>
         </>
