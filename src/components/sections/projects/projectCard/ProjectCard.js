@@ -26,7 +26,6 @@ const ProjectCard = (props) => {
   };
 
   const deleteWorkHandler = () => {
-    console.log("delete project: ", project);
     deleteWork(project.id)
       .then(() => {
         notificationCtx.createNotification("success", "Succesfully deleted");
@@ -39,7 +38,7 @@ const ProjectCard = (props) => {
       });
   };
 
-  return project ? (
+  return (
     <Card className={classes.card} elevation={15}>
       {!isEdit && project.youtubeLink !== "" ? (
         <iframe
@@ -84,7 +83,7 @@ const ProjectCard = (props) => {
         </CardContent>
       </div>
     </Card>
-  ) : null;
+  );
 };
 
 export default ProjectCard;

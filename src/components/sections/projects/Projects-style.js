@@ -5,9 +5,6 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "4rem",
     minHeight: "100vh",
   },
-  containerEdit: {
-
-  },
   title: {
     fontSize: "2rem !important",
     fontWeight: "700 !important",
