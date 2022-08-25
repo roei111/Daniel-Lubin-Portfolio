@@ -9,6 +9,8 @@ import SignIn from "./SignIn";
 import NotificationContext from "../../../context/notification-context";
 import Notification from "../../ui/Notification";
 import ContactForm from "./forms/ContactForm";
+import ProjectsEdit from "./ProjectsEdit";
+import { EditProjectContextProvider } from "../../../context/edit-project-context";
 
 const AdminPanel = () => {
   const [value, setValue] = useState(1);
@@ -63,7 +65,10 @@ const AdminPanel = () => {
           />
           <Box sx={{ flex: 1, bgcolor: "#eaeff1" }}>
             <TabPanel value={value} index={0}>
-              <ProjectForm />
+              <EditProjectContextProvider>
+                <ProjectForm />
+                <ProjectsEdit />
+              </EditProjectContextProvider>
             </TabPanel>
             <TabPanel value={value} index={1}>
               <AboutForm />

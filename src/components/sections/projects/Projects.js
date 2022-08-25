@@ -18,7 +18,8 @@ const getProjects = async () => {
   });
   return projectsData;
 };
-const Projects = () => {
+const Projects = (props) => {
+  const { isEdit } = props;
   const [projects, setProjects] = useState(null);
   useEffect(() => {
     getProjects().then((projects) => {
@@ -28,16 +29,16 @@ const Projects = () => {
 
   const classes = useStyles();
   return (
-    <Container id="works" className={classes.container}>
+    <Container id="works" className={isEdit ? null : classes.container}>
       <Typography className={classes.title} component="h2">
-        Works
+        {isEdit ? "Click on the work you want to edit" : "Works"}
       </Typography>
-      <div className={classes.projectsWrapper}>
+      <div className={isEdit ? null : classes.projectsWrapper}>
         {projects
           ? projects.map((project) => (
-              <ProjectCard project={project} key={project.id} />
+              <ProjectCard project={project} key={project.id} isEdit={isEdit} />
             ))
-          : [...Array(6)].map((item,index) => (
+          : [...Array(6)].map((item, index) => (
               <Skeleton
                 key={index}
                 animation="wave"
