@@ -15,7 +15,14 @@ export const useStyles = makeStyles((theme) => ({
       width: "500px",
     },
   },
+  cardOnEdit: {
+    padding: "16px",
+    
+  },
   contentWrapper: {
     textAlign: "center",
+  },
+  button: {
+    color: "rgba(0,0,0,0.6) !important",
   },
 }));

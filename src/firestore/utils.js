@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from ".";
 
 export const getData = async (collectionName) => {
@@ -8,4 +8,8 @@ export const getData = async (collectionName) => {
     data.push({ id: doc.id, ...doc.data() });
   });
   return data;
+};
+
+export const deleteWork = async (workId) => {
+  await deleteDoc(doc(db, "works", workId));
 };

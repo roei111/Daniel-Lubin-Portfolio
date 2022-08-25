@@ -1,12 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import NotificationContext from "../../../../context/notification-context";
 import { Paper, Button, TextField, Box, Typography } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../firestore";
+import EditProjectContext from "../../../../context/edit-project-context";
 
 const ProjectForm = () => {
   const notificationCtx = useContext(NotificationContext);
+  const editProjectContext = useContext(EditProjectContext);
+  const { projectOnEdit, closeEdit } = editProjectContext;
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
@@ -16,20 +19,47 @@ const ProjectForm = () => {
     },
   });
 
+  useEffect(() => {
+    if (projectOnEdit) {
+      reset(projectOnEdit, { keepDefaultValues: true });
+    }
+  }, [projectOnEdit, reset]);
+
+  const closeEditHandler = () => {
+    closeEdit();
+    reset();
+  };
+
   const sumbitHandler = async (data) => {
-    await addDoc(collection(db, "works"), data)
+    if (projectOnEdit) {
+      await updateDoc(doc(db, "works", projectOnEdit.id), data)
       .then(() => {
         notificationCtx.createNotification(
           "success",
-          "Successfully created work"
+          "Successfully updated work"
         );
       })
-      .catch((error) => {
+      .catch(() => {
         notificationCtx.createNotification(
           "error",
-          "There was an error trying to create work"
+          "There was an error trying to update the work"
         );
       });
+    } else {
+      await addDoc(collection(db, "works"), data)
+        .then(() => {
+          notificationCtx.createNotification(
+            "success",
+            "Successfully created work"
+          );
+        })
+        .catch((error) => {
+          notificationCtx.createNotification(
+            "error",
+            "There was an error trying to create work"
+          );
+        });
+    }
     reset();
   };
 
@@ -41,7 +71,7 @@ const ProjectForm = () => {
           margin={{ xs: "20px 0", sm: "20px 100px" }}
         >
           <Typography variant="h5" textAlign={"center"}>
-            Add new work
+            {projectOnEdit ? "Edit work" : "Add new work"}
           </Typography>
           <Controller
             control={control}
@@ -114,6 +144,11 @@ const ProjectForm = () => {
           <Button variant="contained" type="sumbit">
             Submit
           </Button>
+          {projectOnEdit ? (
+            <Button variant="contained" onClick={closeEditHandler}>
+              Close edit
+            </Button>
+          ) : null}
         </Box>
       </form>
     </Paper>
