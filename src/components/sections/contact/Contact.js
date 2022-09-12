@@ -19,35 +19,44 @@ const Contact = () => {
       <Typography className={classes.title} component="h2">
         Contact
       </Typography>
-      <div className={classes.contactText}>
-        <Typography variant="h6">
-          <b>Email</b>
-        </Typography>
-        {contact ? (
-          <Typography variant="h7">{contact.email}</Typography>
-        ) : (
-          <Skeleton variant="text" className={classes.skeleton} />
-        )}
-        <Typography variant="h6" style={{ marginTop: "1rem" }}>
-          <b>Instagram</b>
-        </Typography>
-        {contact ? (
-          <a
-            className={classes.icons}
-            href={`https://www.instagram.com/${contact.instagramUser}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <InstagramIcon className={classes.icons} fontSize="medium" />
-            <br />
-            <Typography variant="h7">
-              {contact.instagramUser}
-              <OpenInNewIcon fontSize="small" />
-            </Typography>
-          </a>
-        ) : (
-          <Skeleton variant="text" className={classes.skeleton} />
-        )}
+      <div className={classes.content}>
+        <div className={classes.contactText}>
+          <Typography variant="h6">
+            <b>Email</b>
+          </Typography>
+          {contact ? (
+            <Typography variant="h7">{contact.email}</Typography>
+          ) : (
+            <Skeleton variant="text" className={classes.skeleton} />
+          )}
+          <Typography variant="h6" style={{ marginTop: "1rem" }}>
+            <b>Instagram</b>
+          </Typography>
+          {contact ? (
+            <a
+              className={classes.icons}
+              href={`https://www.instagram.com/${contact.instagramUser}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon className={classes.icons} fontSize="medium" />
+              <br />
+              <Typography variant="h7">
+                {contact.instagramUser}
+                <OpenInNewIcon fontSize="small" />
+              </Typography>
+            </a>
+          ) : (
+            <Skeleton variant="text" className={classes.skeleton} />
+          )}
+        </div>
+        <img
+          src={
+            "https://res.cloudinary.com/dq6iduc79/image/upload/v1659701636/Daniel%20Lubin%20Portfolio/Headshot_psz4l7_o6ml5z.webp"
+          }
+          alt="about me"
+          className={classes.contactImage}
+        />
       </div>
     </Container>
   );

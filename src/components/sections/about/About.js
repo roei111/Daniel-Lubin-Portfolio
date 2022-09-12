@@ -42,7 +42,7 @@ const About = () => {
         </div>
         <img
           src={
-            "https://res.cloudinary.com/dq6iduc79/image/upload/v1659701636/Daniel%20Lubin%20Portfolio/Headshot_psz4l7_o6ml5z.jpg"
+            "https://res.cloudinary.com/dq6iduc79/image/upload/v1662972933/Daniel%20Lubin%20Portfolio/about_image.webp"
           }
           alt="about me"
           className={classes.aboutImage}

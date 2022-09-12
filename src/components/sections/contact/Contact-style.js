@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem !important",
   },
   contactText: {
+    width: "50%",
     textAlign: "center",
   },
   icons: {
@@ -24,5 +25,22 @@ export const useStyles = makeStyles((theme) => ({
   skeleton: {
     margin: "0 auto",
     width: "150px"
+  },
+  contactImage: {
+    width: "50%",
+    margin: "0 auto",
+    marginTop: "2rem",
+    display: "block",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
+  },
+  content: {
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
   },
 }));
