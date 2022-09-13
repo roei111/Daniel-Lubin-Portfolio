@@ -37,9 +37,9 @@ function Header(props) {
         onChange={changeTab}
         indicatorColor="secondary"
       >
-        <Tab label="Works" {...a11yProps(1)} />
-        <Tab label="About" {...a11yProps(2)} />
-        <Tab label="Contact" {...a11yProps(3)} />
+        <Tab label="Works" {...a11yProps(1)} sx={{padding: 0}}/>
+        <Tab label="About" {...a11yProps(2)} sx={{padding: 0}}/>
+        <Tab label="Contact" {...a11yProps(3)} sx={{padding: 0}}/>
       </Tabs>
       <Button
         variant="containd"
