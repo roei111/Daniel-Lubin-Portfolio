@@ -11,11 +11,23 @@ import Notification from "../../ui/Notification";
 import ContactForm from "./forms/ContactForm";
 import ProjectsEdit from "./ProjectsEdit";
 import { EditProjectContextProvider } from "../../../context/edit-project-context";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const AdminPanel = () => {
   const [value, setValue] = useState(1);
   const [loggedInUser, setLoggedInUser] = useState(auth.currentUser);
   const notificationCtx = useContext(NotificationContext);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#000",
+      },
+      secondary: {
+        main: "#fff",
+      },
+    },
+  });
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -46,42 +58,44 @@ const AdminPanel = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        minHeight: "100vh",
-        flexDirection: "column",
-        flex: 1,
-        marginTop: "45px",
-      }}
-    >
-      {notificationCtx.notification ? <Notification /> : null}
-      {loggedInUser ? (
-        <>
-          <Header
-            handleTabChange={handleTabChange}
-            value={value}
-            logOutHandler={logOutHandler}
-          />
-          <Box sx={{ flex: 1, bgcolor: "#eaeff1" }}>
-            <TabPanel value={value} index={0}>
-              <EditProjectContextProvider>
-                <ProjectForm />
-                <ProjectsEdit />
-              </EditProjectContextProvider>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <AboutForm />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <ContactForm />
-            </TabPanel>
-          </Box>
-        </>
-      ) : (
-        <SignIn />
-      )}
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          display: "flex",
+          minHeight: "100vh",
+          flexDirection: "column",
+          flex: 1,
+          marginTop: "45px",
+        }}
+      >
+        {notificationCtx.notification ? <Notification /> : null}
+        {loggedInUser ? (
+          <>
+            <Header
+              handleTabChange={handleTabChange}
+              value={value}
+              logOutHandler={logOutHandler}
+            />
+            <Box sx={{ flex: 1, bgcolor: "#eaeff1" }}>
+              <TabPanel value={value} index={0}>
+                <EditProjectContextProvider>
+                  <ProjectForm />
+                  <ProjectsEdit />
+                </EditProjectContextProvider>
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                <AboutForm />
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+                <ContactForm />
+              </TabPanel>
+            </Box>
+          </>
+        ) : (
+          <SignIn />
+        )}
+      </Box>
+    </ThemeProvider>
   );
 };
 
