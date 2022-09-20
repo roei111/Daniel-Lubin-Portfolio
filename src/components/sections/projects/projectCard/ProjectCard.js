@@ -14,6 +14,7 @@ import { animateScroll as scroll } from "react-scroll";
 import { deleteWork } from "../../../../firestore/utils";
 import NotificationContext from "../../../../context/notification-context";
 import ConfirmDialog from "../../../ui/ConfirmDialog";
+import YoutubeVideo from "./YoutubeVideo";
 
 const ProjectCard = (props) => {
   const classes = useStyles();
@@ -39,20 +40,14 @@ const ProjectCard = (props) => {
         );
       });
   };
-
   return (
     <>
       <Card className={classes.card} elevation={15}>
         {!isEdit && project.youtubeLink !== "" ? (
-          <iframe
-            width="100%"
-            height="250"
-            src={project.youtubeLink}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <YoutubeVideo
+            title={project.title}
+            youtubeLink={project.youtubeLink}
+          />
         ) : null}
         <div className={classes.contentWrapper}>
           <CardContent>
