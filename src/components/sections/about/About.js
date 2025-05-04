@@ -11,7 +11,7 @@ const About = () => {
     getData("about")
       .then((about) => {
         setAbout(about[0]);
-      })
+      });
   }, []);
   const classes = useStyles();
   return (
@@ -40,13 +40,20 @@ const About = () => {
             ))
           )}
         </div>
-        <img
-          src={
-            "https://res.cloudinary.com/dq6iduc79/image/upload/v1662972933/Daniel%20Lubin%20Portfolio/about_image.webp"
-          }
-          alt="about me"
-          className={classes.aboutImage}
-        />
+        {about && about.imageUrl ? (
+          <img
+            src={about.imageUrl}
+            alt="about me"
+            className={classes.aboutImage}
+          />
+        ) : (
+          <Skeleton
+            variant="rectangular"
+            className={classes.skeleton}
+            width={210}
+            height={118}
+          />
+        )}
       </div>
     </Container>
   );

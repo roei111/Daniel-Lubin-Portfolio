@@ -2,12 +2,13 @@ import { Paper, Button, TextField, Box, Typography } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../../../firestore";
-import { getData } from "../../../../firestore/utils";
+import { getData, uploadImageToCloudinary } from "../../../../firestore/utils";
 import { useEffect, useState, useContext } from "react";
 import NotificationContext from "../../../../context/notification-context";
 
 const AboutForm = () => {
   const [about, setAbout] = useState({});
+  const [imageFile, setImageFile] = useState(null);
   const notificationCtx = useContext(NotificationContext);
 
   const { control, handleSubmit, setValue } = useForm({
@@ -15,6 +16,7 @@ const AboutForm = () => {
       text: "",
     },
   });
+
   useEffect(() => {
     getData("about")
       .then((about) => {
@@ -29,20 +31,28 @@ const AboutForm = () => {
       });
   }, [setValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const handleImageChange = (event) => {
+    setImageFile(event.target.files[0]);
+  };
+
   const sumbitHandler = async (data) => {
-    await updateDoc(doc(db, "about", about.id), data)
-      .then(() => {
-        notificationCtx.createNotification(
-          "success",
-          "Successfully updated About text"
-        );
-      })
-      .catch(() => {
-        notificationCtx.createNotification(
-          "error",
-          "There was an error trying to update About text"
-        );
-      });
+    try {
+      let imageUrl = about.imageUrl; // Keep existing image URL if no new image is uploaded
+      if (imageFile) {
+        imageUrl = await uploadImageToCloudinary(imageFile);
+      }
+
+      await updateDoc(doc(db, "about", about.id), { ...data, imageUrl });
+      notificationCtx.createNotification(
+        "success",
+        "Successfully updated About section"
+      );
+    } catch (error) {
+      notificationCtx.createNotification(
+        "error",
+        "There was an error trying to update About section"
+      );
+    }
   };
 
   return (
@@ -78,7 +88,19 @@ const AboutForm = () => {
                 />
               )}
             />
-            <Button variant="contained" type="sumbit">
+            <Button
+              variant="contained"
+              component="label"
+            >
+              Upload Image
+              <input
+                type="file"
+                hidden
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </Button>
+            <Button variant="contained" type="submit">
               Edit
             </Button>
           </Box>
